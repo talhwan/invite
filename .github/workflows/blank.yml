@@ -1,0 +1,19 @@
+name: Auto Accept Collabs
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: 15 0 * * *
+
+jobs:
+  file_sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetching Local Repository
+        uses: actions/checkout@master
+      - name: Auto Accept Collabs
+        uses: kbrashears5/github-action-auto-accept-collabs@v2.0.0
+        with:
+          TOKEN: ${{ secrets.REPO_TOKEN }}
